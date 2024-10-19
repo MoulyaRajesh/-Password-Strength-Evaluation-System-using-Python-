@@ -1,0 +1,19 @@
+def password_strength(password):
+    length_criteria = len(password) >= 8
+    uppercase_criteria = any(char.isupper() for char in password)
+    lowercase_criteria = any(char.islower() for char in password)
+    number_criteria = any(char.isdigit() for char in password)
+    special_char_criteria = any(not char.isalnum() for char in password)
+    score = sum([length_criteria, uppercase_criteria, lowercase_criteria, number_criteria, special_char_criteria])
+    if score == 5:
+        return "Password Strength: Very Strong"
+    elif score == 4:
+        return "Password Strength: Strong"
+    elif score == 3:
+        return "Password Strength: Medium"
+    elif score == 2:
+        return "Password Strength: Weak"
+    else:
+        return "Password Strength: Very Weak"
+password = input("Enter your password: ")
+print(password_strength(password))
